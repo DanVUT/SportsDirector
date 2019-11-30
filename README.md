@@ -1,5 +1,5 @@
 # Sports Director
-Real time Video Director. Application is for presenting Live Input on some Presentation Screens. You can substitute the live input with some local media.
+Real time Video Director. Application is for presenting live video input on some Presentation Screens. You can substitute the live input with some local media. You are able to choose some live device or URL stream as live video input. You can record this live input and create highlights.
 
 # How To Compile
 1. MediaLooks MFormats SDK is needed for compilation of this project
