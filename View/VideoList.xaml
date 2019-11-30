@@ -1,0 +1,44 @@
+﻿<Page x:Class="MFormat.View.VideoList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+      xmlns:cmd= "http://www.galasoft.ch/mvvmlight"
+      xmlns:local="clr-namespace:MFormat.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MediaList"
+      DataContext="{Binding Source={StaticResource Locator}, Path=videoListViewModel}">
+    
+    <Grid>
+        <ListBox Grid.Row="1" x:Name="videoList" ItemsSource="{Binding VideosList}" ScrollViewer.VerticalScrollBarVisibility="Disabled"  Grid.IsSharedSizeScope="True" HorizontalContentAlignment="Stretch">
+
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="Focusable" Value="False"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="MediaListTemplate">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Source="{Binding ImageData}" Height="30px"></Image>
+                        <TextBlock Grid.Column="1" Text="{Binding Name}" VerticalAlignment="Center"></TextBlock>
+                        <Button Grid.Column="2" Content="Broadcast" HorizontalAlignment="Right" Margin="10 0 0 0" Command="{Binding DataContext.BroadcastVideoCommand, RelativeSource={RelativeSource AncestorType=Page,AncestorLevel=1}}" CommandParameter="{Binding}"></Button>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
+    </Grid>
+</Page>

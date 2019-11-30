@@ -1,0 +1,53 @@
+﻿<Window x:Class="MFormat.View.InputDeviceDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MFormat.View"
+        mc:Ignorable="d"
+        Title="Input Device Dialog" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen">
+    
+    
+    
+    <StackPanel>
+        <WrapPanel HorizontalAlignment="Center" Margin="0 15 0 10">
+            <RadioButton x:Name="videoSettingsEnabledButton" GroupName="Source" Margin="0 0 20 0" Checked="RadioButton_Checked">Device Input</RadioButton>
+            <RadioButton GroupName="Source" Checked="RadioButton_Checked_1" >Stream Input</RadioButton>
+        </WrapPanel>
+        <GroupBox Header="Video settings " FontSize="15" Margin="5" MinWidth="250" x:Name="videoSettings">
+            <StackPanel>
+                <Label Content="Input Video Device:"  HorizontalAlignment="Left" FontSize="12" ></Label>
+                <ComboBox x:Name="videoInputComboBox"  Margin="5,5,5,5" SelectionChanged="videoInputComboBox_SelectionChanged"></ComboBox>
+                
+                <Label Content="Input Video Line:"  HorizontalAlignment="Left" FontSize="12" ></Label>
+                <ComboBox x:Name="videoLineComboBox" Margin="5,5,5,5" SelectionChanged="videoLineComboBox_SelectionChanged"></ComboBox>
+                
+                <Label Content="Input Video Format:"  HorizontalAlignment="Left" FontSize="12" ></Label>
+                <ComboBox x:Name="videoFormatComboBox"  Margin="5,5,5,5" SelectionChanged="videoFormatComboBox_SelectionChanged"></ComboBox>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Header="Audio Settings" FontSize="15" Margin="5 10 5 10" x:Name="audioSettings">
+            <StackPanel>
+                <Label Content="Internal:"  HorizontalAlignment="Left" FontSize="12" ></Label>
+                <ComboBox x:Name="audioInternalComboBox"  Margin="5,5,5,5" SelectionChanged="audioInternalComboBox_SelectionChanged" ></ComboBox>
+
+                <Label Content="External:"  HorizontalAlignment="Left" FontSize="12" ></Label>
+                <ComboBox x:Name="audioExternalComboBox"  Margin="5,5,5,5" SelectionChanged="audioExternalComboBox_SelectionChanged" ></ComboBox>
+
+                <Label Content="Format:"  HorizontalAlignment="Left" FontSize="12" ></Label>
+                <ComboBox x:Name="audioFormatComboBox"  Margin="5,5,5,5" SelectionChanged="audioFormatComboBox_SelectionChanged" ></ComboBox>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Stream Settings" x:Name="streamSettings" Margin="5" MinWidth="250">
+            <StackPanel>
+                <Label Content="Enter Stream URL" ></Label>
+                <TextBox x:Name="streamUrl"  Margin="5,5,5,5"></TextBox>
+            </StackPanel>
+        </GroupBox>
+        <WrapPanel  HorizontalAlignment="Right" Margin="0,10,10,0">
+            <Button IsDefault="True" Content="OK" Margin="0,0,10,0" MinWidth="60" Click="Button_Click"></Button>
+            <Button IsCancel="True" Content="Cancel" MinWidth="60"></Button>
+        </WrapPanel>
+    </StackPanel>
+</Window>

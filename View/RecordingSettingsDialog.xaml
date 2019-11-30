@@ -1,0 +1,51 @@
+﻿<Window x:Class="MFormat.View.RecordingSettingsDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MFormat.View"
+        mc:Ignorable="d"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:cmd= "http://www.galasoft.ch/mvvmlight"
+        Title="Recording Settings Dialog" SizeToContent="WidthAndHeight"
+        DataContext="{Binding Source={StaticResource Locator}, Path=recordingSettingsDialogViewModel}">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding InitializeComboboxesCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    
+    <GroupBox Header="Recording Settings" MinWidth="350">
+        <StackPanel Margin="0 5">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Margin="0 0 0 5">Video Format:</TextBlock>
+                <ComboBox Margin="0 0 0 5" ItemsSource="{Binding VideoFormatsList}" SelectedItem="{Binding SelectedVideoFormat}"></ComboBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical">
+                <TextBlock Margin="0 0 0 5">Format:</TextBlock>
+                <ComboBox Margin="0 0 0 5" ItemsSource="{Binding FormatsList}" SelectedIndex="{Binding SelectedFormatIndex}"></ComboBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical">
+                <TextBlock Margin="0 0 0 5">Video codec:</TextBlock>
+                <ComboBox Margin="0 0 0 5" ItemsSource="{Binding VideoCodecList}" SelectedIndex="{Binding SelectedVideoCodecIndex}"></ComboBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical">
+                <TextBlock Margin="0 0 0 5">Audio codec:</TextBlock>
+                <ComboBox Margin="0 0 0 5" ItemsSource="{Binding AudioCodecList}" SelectedIndex="{Binding SelectedAudioCodecIndex}"></ComboBox>
+            </StackPanel>
+
+            <StackPanel Margin="0 0 0 15">
+                <TextBlock Margin="0 0 0 5">Destination file:</TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox MinWidth="300" Name="recordFile" Text="{Binding DestinationFile, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <Button Content="Browse" MinWidth="50" Margin="5 0 0 0" Command="{Binding OpenSaveFileDialogCommand}"></Button>
+                </StackPanel>
+            </StackPanel>
+            <Button Content="Set Recorder" Command="{Binding SetRecorderCommand}"></Button>
+        </StackPanel>
+    </GroupBox>
+</Window>

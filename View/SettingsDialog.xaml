@@ -1,0 +1,93 @@
+﻿<Window x:Class="MFormat.View.SettingsDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MFormat.View"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:cmd= "http://www.galasoft.ch/mvvmlight"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        DataContext="{Binding Source = {StaticResource Locator}, Path=settingsDialogViewModel}"
+        mc:Ignorable="d"
+        Title="Settings" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <GroupBox Grid.Row="0" Header="Videos Folder " Margin="5 10 5 0" FontSize="14">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Text="{Binding VideosFolder, Mode=TwoWay}" Grid.Row="1" FontSize="12" Margin="5" MinWidth="200" ></TextBox>
+                    <Button Grid.Row ="1" Grid.Column="1" Content="Browse" Margin="0 5 0 5" Command="{Binding BrowseVideoFolderCommand}"></Button>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+        
+        <GroupBox Grid.Row="1" Header="Images Folder " Margin="5 5 5 0" FontSize="14">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Text="{Binding ImagesFolder}" FontSize="12" Margin="5" MinWidth="200"/>
+                    <Button Grid.Row ="1" Grid.Column="1" Content="Browse" Margin="0 5 0 5" Command="{Binding BrowseImageFolderCommand}"/>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Row="2" Header="Overlays Folder " Margin="5 5 5 0" FontSize="14">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Text="{Binding OverlaysFolder}" Grid.Row="1" FontSize="12" Margin="5" MinWidth="200"></TextBox>
+                    <Button Grid.Row ="1" Grid.Column="1" Content="Browse" Margin="0 5 0 5" Command="{Binding BrowseOverlayFolderCommand}"></Button>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Row="3" Header="Actions settings" Margin="5 10 5 0" FontSize="14">
+            <StackPanel>
+                <GroupBox Header="Short Action" Margin="0 0 0 5">
+                    <StackPanel Orientation="Horizontal">
+                        <Label>Before</Label>
+                        <xctk:IntegerUpDown Value="{Binding ShortBefore}" MinWidth="70" Margin="10 0 5 0" Minimum="0" PreviewMouseWheel="IntegerUpDown_PreviewMouseWheel" ValueChanged="IntegerUpDown_ValueChanged"></xctk:IntegerUpDown>
+                        <Label>After</Label>
+                        <xctk:IntegerUpDown Value="{Binding ShortAfter}" MinWidth="70" Margin="10 0 0 0" Minimum="1" PreviewMouseWheel="IntegerUpDown_PreviewMouseWheel" ValueChanged="IntegerUpDown_ValueChanged"></xctk:IntegerUpDown>
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox Header="Medium Action" Margin="0 0 0 5">
+                    <StackPanel Orientation="Horizontal">
+                        <Label>Before</Label>
+                        <xctk:IntegerUpDown Value="{Binding MediumBefore}" MinWidth="70" Margin="10 0 5 0" Minimum="0" PreviewMouseWheel="IntegerUpDown_PreviewMouseWheel" ValueChanged="IntegerUpDown_ValueChanged"></xctk:IntegerUpDown>
+                        <Label>After</Label>
+                        <xctk:IntegerUpDown Value="{Binding MediumAfter}" MinWidth="70" Margin="10 0 0 0" Minimum="1" PreviewMouseWheel="IntegerUpDown_PreviewMouseWheel" ValueChanged="IntegerUpDown_ValueChanged"></xctk:IntegerUpDown>
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox Header="Long Action" Margin="0 0 0 5">
+                    <StackPanel Orientation="Horizontal">
+                        <Label>Before</Label>
+                        <xctk:IntegerUpDown Value="{Binding LongBefore}" MinWidth="70" Margin="10 0 5 0" Minimum="0" PreviewMouseWheel="IntegerUpDown_PreviewMouseWheel" ValueChanged="IntegerUpDown_ValueChanged"></xctk:IntegerUpDown>
+                        <Label>After</Label>
+                        <xctk:IntegerUpDown Value="{Binding LongAfter}" MinWidth="70" Margin="10 0 0 0" Minimum="1" PreviewMouseWheel="IntegerUpDown_PreviewMouseWheel" ValueChanged="IntegerUpDown_ValueChanged"></xctk:IntegerUpDown>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </GroupBox>
+
+        <Button IsDefault="True" Grid.Row="4" Margin="0 10 0 0" Content="Save"  MaxWidth="100" FontSize="14" Command="{Binding SaveSettingsCommand}" Grid.ColumnSpan="2"/>
+    </Grid>
+</Window>
